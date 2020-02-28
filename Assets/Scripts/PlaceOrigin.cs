@@ -10,8 +10,10 @@ using UnityEngine.XR.ARFoundation;
 public class PlaceOrigin : MonoBehaviour {
 
 	public static GameObject origin;
+	Pose startOriginPose;
 
-	public GameObject confirmUI;
+	public GameObject confirmUI,
+		markerPrefab, marker;
 
 	private bool start, placed, adjust;
 	public float height = 1f;
@@ -23,13 +25,22 @@ public class PlaceOrigin : MonoBehaviour {
 		raycastManager = GetComponent<ARRaycastManager>();
 		refManager = GetComponent<ARReferencePointManager>();
 		planeManager = GetComponent<ARPlaneManager>();
+
+		marker = Instantiate(markerPrefab);
+		marker.SetActive(false);
 	}
 
 	private List<ARRaycastHit> hits = new List<ARRaycastHit>();
 	void Update() {
 		if(start && !placed) {
 			foreach(Touch touch in Input.touches) {
-				if(touch.phase == TouchPhase.Began) {
+				if(touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved) {
+					if(raycastManager.Raycast(touch.position, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinBounds)) {
+						Pose p = new Pose(hits[0].pose.position + (Vector3.up * height / 100), hits[0].pose.rotation);
+						marker.transform.position = p.position;
+						marker.transform.rotation = p.rotation;
+					}
+				} else if(touch.phase == TouchPhase.Ended) {
 					if(raycastManager.Raycast(touch.position, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinBounds)) {
 						ARPlane plane = planeManager.GetPlane(hits[0].trackableId);
 						Pose p = new Pose(hits[0].pose.position + (Vector3.up * height / 100), hits[0].pose.rotation);
@@ -41,6 +52,7 @@ public class PlaceOrigin : MonoBehaviour {
 								pl.gameObject.SetActive(false);
 							}
 						}
+						startOriginPose = new Pose(origin.transform.position, origin.transform.rotation);
 						print("Origin placed");
 						confirmUI.SetActive(true);
 					}
@@ -48,7 +60,7 @@ public class PlaceOrigin : MonoBehaviour {
 			}
 		}
 		else if(start && adjust) {
-
+			origin.transform.position = startOriginPose.position + (Vector3.up * height / 100);
 		}
 		else if(!start && !placed) {
 
@@ -58,20 +70,20 @@ public class PlaceOrigin : MonoBehaviour {
 		}
 	}
 
-	public void BackB() {
-
-	}
-
 	public void HeightSlider(float v) {
-
+		print(v);
 	}
 
 	public void ChangeScene(int scene) {
 		if(scene == MySceneManager.CHOOSINGSTART) {
 			start = true;
+			placed = false;
+			adjust = false;
+			confirmUI.SetActive(false);
 		}
 		else if(scene == MySceneManager.CHOOSING) {
-
+			start = placed = adjust = false;
+			confirmUI.SetActive(false);
 		}
 		else {
 			throw new System.Exception("Scene " + scene + " does not exist in PlaceOrigin");

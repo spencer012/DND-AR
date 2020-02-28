@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour {
 	public static GameManager gameManager;
 
 	public GameObject sessionOrigin;
+
+	[HideInInspector]
 	public PlaceOrigin placeOrigin;
 
 	void Start() {
@@ -16,6 +18,8 @@ public class GameManager : MonoBehaviour {
 		} else {
 			Destroy(gameObject);
 		}
+
+		placeOrigin = sessionOrigin.GetComponent<PlaceOrigin>();
 	}
 	
 	void Update() {
