@@ -57,7 +57,8 @@ public class BoardManager : MonoBehaviour {
 						}
 					}
 					else if(gHit.tag.Equals("Tile") && selectCooldown <= 0 && selected != null) {
-
+						PieceMover tmp = selected.AddComponent<PieceMover>();
+						tmp.MoveTo(gHit.transform.position + (Vector3.up * gHit.transform.localScale.y / 2));
 					}
 				}
 				else if(selectCooldown <= 0) {
