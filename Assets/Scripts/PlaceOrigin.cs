@@ -33,14 +33,14 @@ public class PlaceOrigin : MonoBehaviour {
 
 	private List<ARRaycastHit> hits = new List<ARRaycastHit>();
 	void Update() {
-		if(start && !placed) {
+		if(start && !placed) { //if it is the start and the first phase
 			foreach(Touch touch in Input.touches) {
 				if(touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Ended) {
 					if(raycastManager.Raycast(touch.position, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinBounds)) {
 						if (marker.activeSelf == false) {
 							marker.SetActive(true);
 						}
-						Pose p = new Pose(hits[0].pose.position + (Vector3.up * height / 100), hits[0].pose.rotation);
+						Pose p = new Pose(hits[0].pose.position + (Vector3.up * height / 100), hits[0].pose.rotation); //move marker to new hit
 						marker.transform.position = p.position;
 						marker.transform.rotation = p.rotation;
 						if (touch.phase == TouchPhase.Ended) { //if the lifting of the touch is on a plane go to the confirm screen
@@ -62,7 +62,7 @@ public class PlaceOrigin : MonoBehaviour {
 				}
 			}
 		}
-		else if(start && adjust) {
+		else if(start && adjust) { //if it is the start and the second phase
 			marker.transform.position = startOriginPose.position + (Vector3.up * height / 100);
 			if (done) {
 				startOriginPose.position += (Vector3.up * height / 100);
@@ -72,14 +72,14 @@ public class PlaceOrigin : MonoBehaviour {
 				done = adjust = false;
 			}
 		}
-		else if(!start && !placed) {
+		else if(!start && !placed) { //if it is not the start and the first phase
 			foreach (Touch touch in Input.touches) {
 				if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Ended) {
 					if (raycastManager.Raycast(touch.position, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinBounds)) {
 						if (marker.activeSelf == false) {
 							marker.SetActive(true);
 						}
-						Pose p = new Pose(hits[0].pose.position + (Vector3.up * height / 100), hits[0].pose.rotation);
+						Pose p = new Pose(hits[0].pose.position + (Vector3.up * height / 100), hits[0].pose.rotation); //move marker to new hit
 						marker.transform.position = p.position;
 						marker.transform.rotation = p.rotation;
 						if (touch.phase == TouchPhase.Ended) { //if the lifting of the touch is on a plane go to the confirm screen
@@ -102,8 +102,8 @@ public class PlaceOrigin : MonoBehaviour {
 				}
 			}
 		}
-		else if(!start && adjust) {
-
+		else if(!start && adjust) { //if it is not the start and the second phase
+			//TODO
 		}
 	}
 
@@ -112,7 +112,7 @@ public class PlaceOrigin : MonoBehaviour {
 		Destroy(marker);
 	}
 
-	public void Back(bool starting) {
+	public void Back(bool starting) { //pressed the back button
 		if (starting) {
 
 		} else {
@@ -138,7 +138,7 @@ public class PlaceOrigin : MonoBehaviour {
 	}
 
 	public void ChangeScene(int scene) {
-		if(scene == MySceneManager.CHOOSINGSTART) {
+		if(scene == MySceneManager.CHOOSINGSTART) { //the place you go to after pressing start in the start menu
 			start = true;
 			placed = adjust = false;
 			confirmUI.SetActive(false);
@@ -155,7 +155,7 @@ public class PlaceOrigin : MonoBehaviour {
 			marker = Instantiate(markerPrefab);
 			marker.SetActive(false);
 		}
-		else if(scene == MySceneManager.CHOOSING) {
+		else if(scene == MySceneManager.CHOOSING) { // after you press change rot/pos in options menu
 			start = placed = false;
 			adjust = true;
 			confirmUI.SetActive(false);

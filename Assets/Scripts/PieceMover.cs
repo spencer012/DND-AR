@@ -19,7 +19,7 @@ public class PieceMover : MonoBehaviour {
 			timeLerp += Time.deltaTime / timeToMove;
 		}
 
-		if(upOrig != myNull) {
+		if(upOrig != myNull) { //go to each position one at a time
 			transform.position = Vector3.Lerp(orig, upOrig, timeLerp);
 			if (timeLerp >= 1) {
 				upOrig = myNull;
