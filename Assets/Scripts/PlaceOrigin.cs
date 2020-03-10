@@ -9,8 +9,9 @@ using UnityEngine.XR.ARFoundation;
 [RequireComponent(typeof(ARPlaneManager))]
 public class PlaceOrigin : MonoBehaviour {
 
-	public static GameObject origin;
-	Pose startOriginPose;
+	public static GameObject anchor;
+	[HideInInspector]
+	public Pose startOriginPose;
 
 	public GameObject confirmUI, rotateUI,
 		markerPrefab, marker;
@@ -65,8 +66,8 @@ public class PlaceOrigin : MonoBehaviour {
 			marker.transform.position = startOriginPose.position + (Vector3.up * height / 100);
 			if (done) {
 				startOriginPose.position += (Vector3.up * height / 100);
-				origin = refManager.AttachReferencePoint(plane, startOriginPose).gameObject;
-				print("Origin placed");
+				anchor = refManager.AttachReferencePoint(plane, startOriginPose).gameObject;
+				print("Anchor placed");
 				MySceneManager.sceneManager.ChangeScene(MySceneManager.MAIN);
 				done = adjust = false;
 			}
@@ -160,8 +161,8 @@ public class PlaceOrigin : MonoBehaviour {
 			confirmUI.SetActive(false);
 			rotateUI.SetActive(true);
 
-			if (origin != null) {
-				Destroy(origin);
+			if (anchor != null) {
+				Destroy(anchor);
 			}
 			
 			marker = Instantiate(markerPrefab);

@@ -38,7 +38,7 @@ public class MySceneManager : MonoBehaviour {
 			GameManager.gameManager.placeOrigin.ChangeScene(CHOOSING);
 		}
 		else if(scene == MAIN) {
-
+			GameManager.gameManager.PlaceBoard();
 		}
 		else if(scene == MAPMAKER) {
 

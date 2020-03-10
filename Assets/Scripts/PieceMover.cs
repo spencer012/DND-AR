@@ -37,6 +37,7 @@ public class PieceMover : MonoBehaviour {
 			transform.position = Vector3.Lerp(upMoved, moveTo, timeLerp);
 			if(timeLerp >= 1) {
 				transform.position = moveTo;
+				tag = "Piece";
 				Destroy(this);
 			}
 		}
@@ -44,8 +45,9 @@ public class PieceMover : MonoBehaviour {
 
 	public void MoveTo(Vector3 pos) {
 		moveTo = pos;
-		upOrig = transform.position + Vector3.up * upDistance;
 		upMoved = pos + Vector3.up * upDistance;
+		upOrig = new Vector3(transform.position.x, upMoved.y, transform.position.z);
 		orig = transform.position;
+		tag = "Moving";
 	}
 }

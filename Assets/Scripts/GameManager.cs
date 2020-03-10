@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour {
 	[HideInInspector]
 	public PlaceOrigin placeOrigin;
 
+	public GameObject boardPrefab, board;
+
 	void Start() {
 		if (gameManager == null) {
 			gameManager = this;
@@ -22,7 +24,9 @@ public class GameManager : MonoBehaviour {
 		placeOrigin = sessionOrigin.GetComponent<PlaceOrigin>();
 	}
 	
-	void Update() {
-
+	public void PlaceBoard() {
+		board = Instantiate(boardPrefab, placeOrigin.startOriginPose.position, placeOrigin.startOriginPose.rotation);
+		board.transform.SetParent(PlaceOrigin.anchor.transform);
+		placeOrigin.enabled = false;
 	}
 }
