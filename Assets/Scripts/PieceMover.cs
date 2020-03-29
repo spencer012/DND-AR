@@ -7,7 +7,7 @@ public class PieceMover : MonoBehaviour {
 	public static float timeToMove = 1,
 		upDistance = 1;
 
-	private static Vector3 myNull = new Vector3(-10, -10, -10);
+	private static Vector3 myNull = new Vector3(-1000, -1000, -1000);
 	private Vector3 moveTo = myNull,
 		upOrig = myNull, upMoved = myNull, orig = myNull;
 

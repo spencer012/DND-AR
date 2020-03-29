@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour {
 		}
 
 		placeOrigin = sessionOrigin.GetComponent<PlaceOrigin>();
+
+		Screen.orientation = ScreenOrientation.Landscape;
 	}
 	
 	public void PlaceBoard() {

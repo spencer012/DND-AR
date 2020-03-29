@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MySceneManager : MonoBehaviour {
 	public static MySceneManager sceneManager;
 
-	public static int START = 0, CHOOSINGSTART = 1, CHOOSING = 2, MAIN = 3, MAPMAKER = 4;
+	public static int TRANSITION = -1, START = 0, CHOOSINGSTART = 1, CHOOSING = 2, MAIN = 3, MAPMAKER = 4;
 
 	private static int currentScene = START;
 
@@ -21,7 +21,9 @@ public class MySceneManager : MonoBehaviour {
 			Destroy(gameObject);
 		}
 	}
-
+	private void SceneTrans() {
+		ChangeScene(currentScene);
+	}
 	public void ChangeScene(int scene) {
 		if(scene == START) { //start menu
 			SceneManager.LoadScene(0);
@@ -29,6 +31,17 @@ public class MySceneManager : MonoBehaviour {
 		}
 		else if(currentScene == START && scene > START && scene <= MAPMAKER) {
 			SceneManager.LoadScene(1);
+			currentScene = TRANSITION;
+			Invoke("SceneTrans", 0.01f);
+			return;
+		}
+		else if(currentScene == TRANSITION && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("main")) {
+			currentScene = CHOOSINGSTART;
+			Invoke("SceneTrans", 0.01f);
+			return;
+		}
+		else if(currentScene == TRANSITION) {
+			return;
 		}
 
 		if (scene == CHOOSINGSTART) { //the beginning of placement, raycast to a plane, set height, and confirm
