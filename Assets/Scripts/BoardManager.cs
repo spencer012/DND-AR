@@ -18,11 +18,14 @@ public class BoardManager : MonoBehaviour {
 
 	private static float selectDelay = 0.2f;
 
+	public readonly static float scale = 0.05f;
+
 	void Start() {
 
 	}
 
 	private RaycastHit hit;
+	
 	void Update() {
 		if (selectCooldown > 0) {
 			selectCooldown -= Time.deltaTime;
@@ -68,7 +71,11 @@ public class BoardManager : MonoBehaviour {
 						else {
 							tmp = selected.AddComponent<PieceMover>();
 						}
-						tmp.MoveTo(gHit.transform.position + (Vector3.up * gHit.transform.localScale.y / 2));
+						tmp.MoveTo(gHit.transform.position + (Vector3.up * scale / 2));
+
+						selected.GetComponent<Renderer>().material = prevMaterial;
+						selected = null;
+						selectCooldown = selectDelay;
 					}
 				}
 				else if (selectCooldown <= 0) { //if nothing was hit
@@ -76,6 +83,7 @@ public class BoardManager : MonoBehaviour {
 					selected = null;
 				}
 			} //touchphase began
+			break;
 		}
 	}
 }

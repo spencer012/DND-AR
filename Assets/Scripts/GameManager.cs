@@ -23,12 +23,11 @@ public class GameManager : MonoBehaviour {
 
 		placeOrigin = sessionOrigin.GetComponent<PlaceOrigin>();
 
-		Screen.orientation = ScreenOrientation.Landscape;
+		//Screen.orientation = ScreenOrientation.Landscape;
 	}
 	
 	public void PlaceBoard() {
 		board = Instantiate(boardPrefab, placeOrigin.startOriginPose.position, placeOrigin.startOriginPose.rotation);
 		board.transform.SetParent(PlaceOrigin.anchor.transform);
-		placeOrigin.enabled = false;
 	}
 }

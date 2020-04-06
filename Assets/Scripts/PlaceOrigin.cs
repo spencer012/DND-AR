@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 
 [RequireComponent(typeof(ARRaycastManager))]
@@ -13,120 +12,92 @@ public class PlaceOrigin : MonoBehaviour {
 	[HideInInspector]
 	public Pose startOriginPose;
 
-	public GameObject confirmUI, rotateUI,
-		markerPrefab, marker;
+	public GameObject confirmUI, markerPrefab, marker;
 
 	private ARPlane plane = null;
 
-	private bool start, placed, adjust, done;
-	public float height, rotation;
+	private bool placed, adjust, done;
+	public float height, rotation, scale;
+	private Vector3 defaultScale;
 
-	ARRaycastManager raycastManager;
+	public static ARRaycastManager raycastManager;
 	ARReferencePointManager refManager;
 	ARPlaneManager planeManager;
+
+	private float cooldown = 0;
+	public float cooldownDelay;
+
 	void Start() {
 		raycastManager = GetComponent<ARRaycastManager>();
 		refManager = GetComponent<ARReferencePointManager>();
 		planeManager = GetComponent<ARPlaneManager>();
 
+		CheckMarker();
+		confirmUI.SetActive(false);
 	}
 
 	private List<ARRaycastHit> hits = new List<ARRaycastHit>();
-	void Update() {
-		if(start && !placed) { //if it is the start and the first phase
-			foreach(Touch touch in Input.touches) {
-				if(touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Ended) {
-					if(raycastManager.Raycast(touch.position, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinBounds)) {
-						if (marker.activeSelf == false) {
-							marker.SetActive(true);
-						}
-						Pose p = new Pose(hits[0].pose.position + (Vector3.up * height / 100), hits[0].pose.rotation); //move marker to new hit
-						marker.transform.position = p.position;
-						marker.transform.rotation = p.rotation;
-						if (touch.phase == TouchPhase.Ended) { //if the lifting of the touch is on a plane go to the confirm screen
-							plane = planeManager.GetPlane(hits[0].trackableId);
-							startOriginPose = new Pose(hits[0].pose.position + (Vector3.up * height / 100), hits[0].pose.rotation);
-							confirmUI.SetActive(true);
-							placed = true;
-
-							foreach (ARPlane pl in planeManager.trackables) {
-								if (pl != plane) {
-									pl.gameObject.SetActive(false);
-								}
+	void Update() { 
+		if(!placed) { //if it is the first phase
+			if (cooldown <= 0) {
+				foreach(Touch touch in Input.touches) {
+					if(touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Ended) {
+						if(raycastManager.Raycast(touch.position, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinBounds)) {
+							if(marker.activeSelf == false) {
+								marker.SetActive(true);
 							}
-							planeManager.detectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.None;
+							//Pose p = new Pose(hits[0].pose.position + (Vector3.up * height / 100), hits[0].pose.rotation); //move marker to new hit
+							marker.transform.position = hits[0].pose.position + (Vector3.up * height / 100);
+							marker.transform.rotation = hits[0].pose.rotation;
+							if(touch.phase == TouchPhase.Ended) { //if the lifting of the touch is on a plane go to the rotation screen
+								plane = planeManager.GetPlane(hits[0].trackableId);
+								startOriginPose = new Pose(hits[0].pose.position + (Vector3.up * height / 100), hits[0].pose.rotation);
+								confirmUI.SetActive(true);
+								placed = true;
+								adjust = true;
+
+								foreach(ARPlane pl in planeManager.trackables) {
+									if(pl != plane) {
+										pl.gameObject.SetActive(false);
+									}
+								}
+								planeManager.detectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.None;
+							}
 						}
-					} else {
-						marker.SetActive(false);
+						else {
+							marker.SetActive(false);
+						}
 					}
 				}
 			}
+			else {
+				cooldown -= Time.deltaTime;
+			}
 		}
-		else if(start && adjust) { //if it is the start and the second phase
+		else if(adjust) { //if it is the second phase
 			marker.transform.position = startOriginPose.position + (Vector3.up * height / 100);
-			if (done) {
+			//marker.transform.rotation = startOriginPose.position + (Vector3.up * height / 100);
+			//Debug.Log((Vector3.up * height / 100));
+			if(done) {
+				Destroy(marker);
 				startOriginPose.position += (Vector3.up * height / 100);
 				anchor = refManager.AttachReferencePoint(plane, startOriginPose).gameObject;
 				print("Anchor placed");
-				MySceneManager.sceneManager.ChangeScene(MySceneManager.MAIN);
 				done = adjust = false;
-			}
-		}
-		else if(!start && !placed) { //if it is not the start and the first phase
-			foreach (Touch touch in Input.touches) {
-				if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Ended) {
-					if (raycastManager.Raycast(touch.position, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinBounds)) {
-						if (marker.activeSelf == false) {
-							marker.SetActive(true);
-						}
-						Pose p = new Pose(hits[0].pose.position + (Vector3.up * height / 100), hits[0].pose.rotation); //move marker to new hit
-						marker.transform.position = p.position;
-						marker.transform.rotation = p.rotation;
-						if (touch.phase == TouchPhase.Ended) { //if the lifting of the touch is on a plane go to the confirm screen
-							plane = planeManager.GetPlane(hits[0].trackableId);
-							startOriginPose = new Pose(hits[0].pose.position + (Vector3.up * height / 100), hits[0].pose.rotation);
-							confirmUI.SetActive(true);
-							placed = true;
+				confirmUI.SetActive(false);
 
-							foreach (ARPlane pl in planeManager.trackables) {
-								if (pl != plane) {
-									pl.gameObject.SetActive(false);
-								}
-							}
-							planeManager.detectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.None;
-						}
-					}
-					else {
-						marker.SetActive(false);
-					}
-				}
+				MySceneManager.sceneManager.ChangeScene(MySceneManager.MAIN);
 			}
-		}
-		else if(!start && adjust) { //if it is not the start and the second phase
-			//TODO
 		}
 	}
 
 	public void Confirm() {
 		done = true;
-		Destroy(marker);
 	}
 
-	public void Back(bool starting) { //pressed the back button
-		if (starting) {
-
-		} else {
-
-		}
-		confirmUI.SetActive(false);
-		rotateUI.SetActive(false);
-		placed = adjust = false;
-		foreach (ARPlane pl in planeManager.trackables) {
-			if (pl != plane) {
-				pl.gameObject.SetActive(true);
-			}
-		}
-		planeManager.detectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.Horizontal;
+	public void Back() { //pressed the back button
+		cooldown = cooldownDelay;
+		ChangeScene(MySceneManager.CHOOSINGPOS);
 	}
 
 	public void HeightSlider(float v) {
@@ -137,39 +108,43 @@ public class PlaceOrigin : MonoBehaviour {
 		rotation = v;
 	}
 
-	public void ChangeScene(int scene) {
-		if(scene == MySceneManager.CHOOSINGSTART) { //the place you go to after pressing start in the start menu
-			start = true;
-			placed = adjust = false;
-			confirmUI.SetActive(false);
-			rotateUI.SetActive(false);
+	public void ScaleSlider(float v) {
+		scale = v;
+	}
 
-			foreach (ARPlane pl in planeManager.trackables) {
-				if (pl != plane) {
-					pl.gameObject.SetActive(true);
-				}
+	public void ChangeScene(int scene) {
+		if(scene == MySceneManager.CHOOSINGPOS) { //the place you go to after pressing start in the start menu
+			placed = adjust = done = false;
+			confirmUI.SetActive(false);
+
+			foreach(ARPlane pl in planeManager.trackables) {
+				pl.gameObject.SetActive(true);
 			}
 			planeManager.detectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.Horizontal;
 
-
-			marker = Instantiate(markerPrefab);
-			marker.SetActive(false);
+			CheckMarker();
 		}
-		else if(scene == MySceneManager.CHOOSING) { // after you press change rot/pos in options menu
-			start = placed = false;
+		else if(scene == MySceneManager.CHOOSINGROT) { // after you press change rot/pos in options menu
+			placed = done = false;
 			adjust = true;
-			confirmUI.SetActive(false);
-			rotateUI.SetActive(true);
+			confirmUI.SetActive(true);
 
-			if (anchor != null) {
+			if(anchor != null) {
 				Destroy(anchor);
 			}
-			
-			marker = Instantiate(markerPrefab);
-			marker.SetActive(false);
+
+			CheckMarker();
 		}
 		else {
 			throw new System.Exception("Scene " + scene + " does not exist in PlaceOrigin");
+		}
+	}
+
+	private void CheckMarker() {
+		if(marker == null) {
+			marker = Instantiate(markerPrefab);
+			marker.SetActive(false);
+			defaultScale = marker.transform.localScale;
 		}
 	}
 }

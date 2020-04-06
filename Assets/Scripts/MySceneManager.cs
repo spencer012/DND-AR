@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MySceneManager : MonoBehaviour {
 	public static MySceneManager sceneManager;
 
-	public static int TRANSITION = -1, START = 0, CHOOSINGSTART = 1, CHOOSING = 2, MAIN = 3, MAPMAKER = 4;
+	public static int TRANSITION = -1, START = 0, CHOOSINGPOS = 1, CHOOSINGROT = 2, MAIN = 3, MAPMAKER = 4;
 
 	private static int currentScene = START;
 
@@ -36,7 +36,7 @@ public class MySceneManager : MonoBehaviour {
 			return;
 		}
 		else if(currentScene == TRANSITION && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("main")) {
-			currentScene = CHOOSINGSTART;
+			currentScene = CHOOSINGPOS;
 			Invoke("SceneTrans", 0.01f);
 			return;
 		}
@@ -44,13 +44,16 @@ public class MySceneManager : MonoBehaviour {
 			return;
 		}
 
-		if (scene == CHOOSINGSTART) { //the beginning of placement, raycast to a plane, set height, and confirm
-			GameManager.gameManager.placeOrigin.ChangeScene(CHOOSINGSTART);
+		if (scene == CHOOSINGPOS) { //the beginning of placement, raycast to a plane, set height, and confirm
+			GameManager.gameManager.placeOrigin.enabled = true;
+			GameManager.gameManager.placeOrigin.ChangeScene(CHOOSINGPOS);
 		}
-		else if(scene == CHOOSING) { //from options menu, can change rotation, height, and has a button to go back to choosing position
-			GameManager.gameManager.placeOrigin.ChangeScene(CHOOSING);
+		else if(scene == CHOOSINGROT) { //from options menu, can change rotation
+			GameManager.gameManager.placeOrigin.enabled = true;
+			GameManager.gameManager.placeOrigin.ChangeScene(CHOOSINGROT);
 		}
 		else if(scene == MAIN) {
+			GameManager.gameManager.placeOrigin.enabled = false;
 			GameManager.gameManager.PlaceBoard();
 		}
 		else if(scene == MAPMAKER) {
