@@ -22,7 +22,7 @@ public class PieceMover : MonoBehaviour {
 			if (timeLerp >= 1) {
 				step++;
 				timeLerp = 0;
-				print("Orig done");
+				//print("Orig done");
 			}
 		}
 		else if(step == 1) {
@@ -30,7 +30,7 @@ public class PieceMover : MonoBehaviour {
 			if(timeLerp >= 1) {
 				step++;
 				timeLerp = 0;
-				print("Moved done");
+				//print("Moved done");
 			}
 		}
 		else if(step == 2) {
@@ -38,7 +38,7 @@ public class PieceMover : MonoBehaviour {
 			if(timeLerp >= 1) {
 				transform.position = moveTo;
 				tag = "Piece";
-				print("moveTo done");
+				//print("moveTo done");
 				Destroy(this);
 			}
 		}

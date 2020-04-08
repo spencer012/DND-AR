@@ -65,7 +65,7 @@ public class BoardManager : MonoBehaviour {
 					}
 					else if (gHit.tag.Equals("Tile") && selected != null) { //after it has selected a piece, if it is selecting a tile
 						PieceMover tmp;
-						if (gHit.tag.Equals("Moving")) { //if it is already moving
+						if (selected.tag.Equals("Moving")) { //if it is already moving
 							tmp = selected.GetComponent<PieceMover>();
 						}
 						else {
