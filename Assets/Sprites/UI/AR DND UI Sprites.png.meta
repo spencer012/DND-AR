@@ -62,6 +62,9 @@ TextureImporter:
   - first:
       213: 1576013027907314251
     second: AR DND UI Sprites_19
+  - first:
+      213: 6540720529950430006
+    second: AR DND UI Sprites_20
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -101,8 +104,8 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
-  spriteMeshType: 1
+  spriteExtrude: 0
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -226,13 +229,13 @@ TextureImporter:
       name: AR DND UI Sprites_2
       rect:
         serializedVersion: 2
-        x: 9
-        y: 3359
-        width: 3621
-        height: 273
+        x: 32
+        y: 3417
+        width: 3531
+        height: 170
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 71, y: 48, z: 64, w: 48}
       outline:
       - - {x: 1723.6875, y: 100.53917}
         - {x: -1749.2812, y: 100.53917}
@@ -255,13 +258,13 @@ TextureImporter:
       name: AR DND UI Sprites_3
       rect:
         serializedVersion: 2
-        x: 66
-        y: 2292
-        width: 3628
-        height: 510
+        x: 118
+        y: 2335
+        width: 3466
+        height: 434
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 28, y: 27, z: 26, w: 27}
       outline:
       - - {x: -1770.3866, y: 232.30394}
         - {x: -1770.3866, y: -214.50844}
@@ -280,13 +283,13 @@ TextureImporter:
       name: AR DND UI Sprites_4
       rect:
         serializedVersion: 2
-        x: 188
-        y: 1479
-        width: 3575
-        height: 550
+        x: 235
+        y: 1523
+        width: 3500
+        height: 489
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 46, y: 53, z: 48, w: 50}
       outline:
       - - {x: -1746.4725, y: 265.7046}
         - {x: -1746.4725, y: -206.53613}
@@ -391,13 +394,13 @@ TextureImporter:
       name: AR DND UI Sprites_8
       rect:
         serializedVersion: 2
-        x: 3927
-        y: 0
-        width: 1546
-        height: 2022
+        x: 3976
+        y: 123
+        width: 1423
+        height: 1868
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 45, y: 44, z: 46, w: 46}
       outline:
       - - {x: -724.81616, y: 986.2566}
         - {x: -724.81616, y: -895.44104}
@@ -416,13 +419,13 @@ TextureImporter:
       name: AR DND UI Sprites_9
       rect:
         serializedVersion: 2
-        x: 5563
-        y: 1249
-        width: 2089
-        height: 431
+        x: 5615
+        y: 1314
+        width: 1915
+        height: 310
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 39, y: 42, z: 42, w: 41}
       outline:
       - - {x: -976.06244, y: 173.74422}
         - {x: -1001.4921, y: 151.94849}
@@ -474,10 +477,10 @@ TextureImporter:
       name: AR DND UI Sprites_11
       rect:
         serializedVersion: 2
-        x: 8164
-        y: 1342
-        width: 637
-        height: 2600
+        x: 8272
+        y: 1424
+        width: 422
+        height: 2482
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -504,10 +507,10 @@ TextureImporter:
       name: AR DND UI Sprites_12
       rect:
         serializedVersion: 2
-        x: 9625
-        y: 1477
-        width: 1559
-        height: 1571
+        x: 9750
+        y: 1689
+        width: 1250
+        height: 1250
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -531,13 +534,13 @@ TextureImporter:
       name: AR DND UI Sprites_0
       rect:
         serializedVersion: 2
-        x: 12764
-        y: 5
-        width: 2471
-        height: 4583
+        x: 12849
+        y: 61
+        width: 2315
+        height: 4506
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 9, y: 9, z: 8, w: 9}
       outline:
       - - {x: -1151.488, y: 2282.6533}
         - {x: -1158.7537, y: 2275.388}
@@ -704,13 +707,13 @@ TextureImporter:
       name: AR DND UI Sprites_18
       rect:
         serializedVersion: 2
-        x: 24296
-        y: 2535
-        width: 1851
-        height: 1599
+        x: 24501
+        y: 2707
+        width: 1420
+        height: 1285
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 40, y: 39, z: 42, w: 44}
       outline:
       - - {x: -724.9962, y: 667.8329}
         - {x: -724.9962, y: -632.6454}
@@ -730,13 +733,13 @@ TextureImporter:
       name: AR DND UI Sprites_19
       rect:
         serializedVersion: 2
-        x: 27939
-        y: 2847
-        width: 1703
-        height: 1107
+        x: 28117
+        y: 3003
+        width: 1320
+        height: 843
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 26, y: 26, z: 24, w: 25}
       outline:
       - - {x: -680.2956, y: -404.1956}
         - {x: 660.2122, y: -404.1956}
@@ -747,6 +750,41 @@ TextureImporter:
       bones: []
       spriteID: 216877ec60c827e4eaeea9fe6c3945f1
       internalID: 1576013027907314251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_20
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 3693
+        width: 3520
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 69, y: 43, z: 57, w: 46}
+      outline:
+      - - {x: 1723.8905, y: 72.78678}
+        - {x: 1698.4608, y: 94.582504}
+        - {x: 1687.5624, y: 98.215126}
+        - {x: -1727.2812, y: 98.215126}
+        - {x: -1745.4453, y: 90.94988}
+        - {x: -1763.6094, y: 69.15416}
+        - {x: -1767.2422, y: 54.623672}
+        - {x: -1767.2422, y: -36.19185}
+        - {x: -1763.6094, y: -50.722332}
+        - {x: -1745.4453, y: -72.51806}
+        - {x: -1727.2812, y: -79.7833}
+        - {x: 1687.5624, y: -79.7833}
+        - {x: 1698.4608, y: -76.15068}
+        - {x: 1723.8905, y: -54.354954}
+      physicsShape: []
+      tessellationDetail: 1
+      bones: []
+      spriteID: 8a319cbe5c599674db290c21ee1a3db1
+      internalID: 6540720529950430006
       vertices: []
       indices: 
       edges: []
