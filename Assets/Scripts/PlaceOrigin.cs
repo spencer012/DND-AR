@@ -27,12 +27,17 @@ public class PlaceOrigin : MonoBehaviour {
 	private float cooldown = 0;
 	public float cooldownDelay;
 
+	public float movementToContinue = 2;
+	private float totalMovement = 0;
+	bool detected = false;
+
 	void Start() {
 		raycastManager = GetComponent<ARRaycastManager>();
 		refManager = GetComponent<ARReferencePointManager>();
 		planeManager = GetComponent<ARPlaneManager>();
 
 		confirmUI.SetActive(false);
+		Input.gyro.enabled = true;
 	}
 
 	private void Awake() {
@@ -41,9 +46,18 @@ public class PlaceOrigin : MonoBehaviour {
 	}
 
 	private List<ARRaycastHit> hits = new List<ARRaycastHit>();
-	void Update() { 
+	void Update() {
+		if(!detected) {
+			Detection();
+		}
+		else {
+			Placing();
+		}
+	}
+
+	void Placing() {
 		if(!placed) { //if it is the first phase
-			if (cooldown <= 0) {
+			if(cooldown <= 0) {
 				foreach(Touch touch in Input.touches) {
 					if(touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Ended) {
 						if(raycastManager.Raycast(touch.position, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinBounds)) {
@@ -56,7 +70,7 @@ public class PlaceOrigin : MonoBehaviour {
 							marker.transform.localScale = new Vector3(scale, scale, scale) * defaultScale;
 							if(touch.phase == TouchPhase.Ended) { //if the lifting of the touch is on a plane go to the rotation screen
 								plane = planeManager.GetPlane(hits[0].trackableId);
-								startOriginPose = new Pose(hits[0].pose.position + (Vector3.up * height / 100), hits[0].pose.rotation);
+								startOriginPose = new Pose(hits[0].pose.position, hits[0].pose.rotation);
 								confirmUI.SetActive(true);
 								placed = true;
 								adjust = true;
@@ -67,6 +81,8 @@ public class PlaceOrigin : MonoBehaviour {
 									}
 								}
 								planeManager.detectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.None;
+
+								PopupManager.popupManager.DisplayPopup(PopupManager.FOUND, false);
 							}
 						}
 						else {
@@ -97,13 +113,30 @@ public class PlaceOrigin : MonoBehaviour {
 		}
 	}
 
+	void Detection() {
+		//print(totalMovement + " " + planeManager.trackables.count);
+		if (totalMovement > movementToContinue && planeManager.trackables.count > 0) {
+			detected = true;
+			PopupManager.popupManager.DisplayPopup(PopupManager.SCAN, false);
+			PopupManager.popupManager.DisplayPopup(PopupManager.FOUND, true);
+			return;
+		}
+		Vector3 r = Input.gyro.rotationRateUnbiased,
+			a = Input.gyro.userAcceleration;
+		float rc = ((Abs(r.x) + Abs(r.y) + Abs(r.z)) / 10);
+		totalMovement += (rc + (4 * (Abs(a.x) + Abs(a.y) + Abs(a.z)))) * Time.deltaTime;
+	}
+	float Abs(float a) {
+		return Mathf.Abs(a);
+	}
+
 	public void Confirm() {
 		done = true;
 	}
 
 	public void Back() { //pressed the back button
 		cooldown = cooldownDelay;
-		ChangeScene(MySceneManager.CHOOSINGPOS);
+		ChangeScene(MySceneManager.CHOOSINGSTART);
 	}
 
 	public void HeightSlider(float v) {
@@ -119,37 +152,29 @@ public class PlaceOrigin : MonoBehaviour {
 	}
 
 	public void ChangeScene(int scene) {
-		if(scene == MySceneManager.CHOOSINGPOS) { //the place you go to after pressing start in the start menu
-			placed = adjust = done = false;
-			confirmUI.SetActive(false);
-
-			foreach(ARPlane pl in planeManager.trackables) {
-				pl.gameObject.SetActive(true);
-			}
-			planeManager.detectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.Horizontal;
-
-			if(anchor != null) {
-				Destroy(anchor);
-			}
-			if (marker != null) {
-				Destroy(marker);
-			}
-			CheckMarker();
+		if(scene == MySceneManager.CHOOSINGSTART) { //the place you go to after pressing start in the start menu
+			detected = false;
+			PopupManager.popupManager.DisplayPopup(PopupManager.SCAN, true);
 		}
-		else if(scene == MySceneManager.CHOOSINGROT) { // after you press change rot/pos in options menu
-			placed = done = false;
-			adjust = true;
-			confirmUI.SetActive(true);
-
-			if(anchor != null) {
-				Destroy(anchor);
-			}
-
-			CheckMarker();
+		else if(scene == MySceneManager.CHOOSINGPOS) { // after you press change pos in options menu
+			detected = true;
 		}
 		else {
 			throw new System.Exception("Scene " + scene + " does not exist in PlaceOrigin");
 		}
+
+		placed = adjust = done = false;
+		confirmUI.SetActive(false);
+
+		foreach(ARPlane pl in planeManager.trackables) {
+			pl.gameObject.SetActive(true);
+		}
+		planeManager.detectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.Horizontal;
+
+		if(anchor != null) {
+			Destroy(anchor);
+		}
+		CheckMarker();
 	}
 
 	private void CheckMarker() {

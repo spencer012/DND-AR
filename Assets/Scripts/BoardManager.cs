@@ -18,7 +18,9 @@ public class BoardManager : MonoBehaviour {
 
 	private static float selectDelay = 0.2f;
 
-	public readonly static float scale = 0.05f;
+	public const float scale = 0.05f;
+
+	public float moveHeight = 5;
 
 	void Start() {
 
@@ -71,7 +73,7 @@ public class BoardManager : MonoBehaviour {
 						else {
 							tmp = selected.AddComponent<PieceMover>();
 						}
-						tmp.MoveTo(gHit.transform.position + (Vector3.up * scale / 2));
+						tmp.MoveTo(gHit.transform.localPosition + (Vector3.up * gHit.transform.localScale.y * moveHeight));
 
 						selected.GetComponent<Renderer>().material = prevMaterial;
 						selected = null;

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject sessionOrigin;
 
-	[HideInInspector]
+	//[HideInInspector]
 	public PlaceOrigin placeOrigin;
 
 	public GameObject boardPrefab, board;
