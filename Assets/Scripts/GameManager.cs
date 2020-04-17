@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject boardPrefab, board;
 
+	public GameObject mainUI;
+
+	public static ShelfManager shelfManager;
+	public static BoardManager boardManager;
+
 	void Start() {
 		if (gameManager == null) {
 			gameManager = this;

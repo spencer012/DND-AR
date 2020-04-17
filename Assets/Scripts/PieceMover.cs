@@ -5,7 +5,7 @@ using UnityEngine;
 public class PieceMover : MonoBehaviour {
 
 	public static float timeToMove = 1,
-		upDistance = 1f * BoardManager.scale;
+		upDistance = 1f;
 
 	
 	private Vector3 moveTo,	upOrig, upMoved, orig;

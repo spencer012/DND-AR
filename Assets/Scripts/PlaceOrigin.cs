@@ -37,7 +37,6 @@ public class PlaceOrigin : MonoBehaviour {
 		planeManager = GetComponent<ARPlaneManager>();
 
 		confirmUI.SetActive(false);
-		Input.gyro.enabled = true;
 	}
 
 	private void Awake() {
@@ -114,17 +113,20 @@ public class PlaceOrigin : MonoBehaviour {
 	}
 
 	void Detection() {
-		//print(totalMovement + " " + planeManager.trackables.count);
-		if (totalMovement > movementToContinue && planeManager.trackables.count > 0) {
+		if(planeManager.trackables.count > 0) {
+			totalMovement += Time.deltaTime;
+		}
+		if (totalMovement > movementToContinue / 10) {
 			detected = true;
 			PopupManager.popupManager.DisplayPopup(PopupManager.SCAN, false);
 			PopupManager.popupManager.DisplayPopup(PopupManager.FOUND, true);
+			Input.gyro.enabled = false;
 			return;
 		}
-		Vector3 r = Input.gyro.rotationRateUnbiased,
-			a = Input.gyro.userAcceleration;
-		float rc = ((Abs(r.x) + Abs(r.y) + Abs(r.z)) / 10);
-		totalMovement += (rc + (4 * (Abs(a.x) + Abs(a.y) + Abs(a.z)))) * Time.deltaTime;
+		//Vector3 r = Input.gyro.rotationRateUnbiased,
+		//	a = Input.gyro.userAcceleration;
+		//float rc = ((Abs(r.x) + Abs(r.y) + Abs(r.z)) / 10);
+		//totalMovement += (rc + (4 * (Abs(a.x) + Abs(a.y) + Abs(a.z)))) * Time.deltaTime;
 	}
 	float Abs(float a) {
 		return Mathf.Abs(a);
@@ -170,6 +172,7 @@ public class PlaceOrigin : MonoBehaviour {
 			pl.gameObject.SetActive(true);
 		}
 		planeManager.detectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.Horizontal;
+		Input.gyro.enabled = true;
 
 		if(anchor != null) {
 			Destroy(anchor);

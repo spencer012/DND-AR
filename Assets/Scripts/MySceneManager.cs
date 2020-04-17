@@ -9,8 +9,8 @@ public class MySceneManager : MonoBehaviour {
 	public static int START = 0, CHOOSINGSTART = 1, CHOOSINGPOS = 2, MAIN = 3, MAPMAKER = 4;
 
 	private static int currentScene = START;
-
 	public static int CurrentScene { get => currentScene; }
+	
 
 	void Start() {
 		if(sceneManager == null) {
@@ -27,6 +27,8 @@ public class MySceneManager : MonoBehaviour {
 		currentScene = scene;
 	}
 	public IEnumerator ChangeSceneAsync(int scene) {
+		bool mainUIon = false;
+
 		if(scene == START) { //start menu
 			//print("11111111111111111111111");
 			yield return SceneManager.LoadSceneAsync(0);
@@ -52,6 +54,7 @@ public class MySceneManager : MonoBehaviour {
 			//print("5555555555555555555555555555555");
 			GameManager.gameManager.placeOrigin.enabled = false;
 			GameManager.gameManager.PlaceBoard();
+			mainUIon = true;
 		}
 		else if(scene == MAPMAKER) {
 
@@ -59,5 +62,8 @@ public class MySceneManager : MonoBehaviour {
 		else {
 			throw new System.Exception("Scene " + scene + " does not exist in MySceneManager");
 		}
+
+		if (scene != START)
+			GameManager.gameManager.mainUI.SetActive(mainUIon);
 	}
 }
