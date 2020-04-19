@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject mainUI;
 
 	public static ShelfManager shelfManager;
-	public static BoardManager boardManager;
+	public static SelectionManager selectionManager;
 
 	void Start() {
 		if (gameManager == null) {

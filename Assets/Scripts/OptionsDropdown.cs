@@ -12,12 +12,18 @@ public class OptionsDropdown : MonoBehaviour {
 		dropDown.SetActive(open);
 	}
 
-	void Update() {
-
-	}
-
 	public void Pressed() {
+		GameManager.selectionManager.UIAction();
 		open = !open;
 		dropDown.SetActive(open);
+	}
+
+	public void DeleteSelected() {
+		GameManager.selectionManager.UIAction();
+		GameManager.selectionManager.DeleteSelected();
+	}
+
+	public void OriginPlace() {
+		MySceneManager.sceneManager.ChangeScene(MySceneManager.CHOOSINGPOS);
 	}
 }

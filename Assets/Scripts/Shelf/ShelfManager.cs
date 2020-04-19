@@ -134,10 +134,10 @@ public class ShelfManager : MonoBehaviour {
 	}
 	public void Selected(int num) {
 		if(num == -1) {
-			GameManager.boardManager.Deselect();
+			GameManager.selectionManager.Deselect();
 			return;
 		}
-		GameManager.boardManager.ShelfSelect(displayRack.displays[num].prefab);
+		GameManager.selectionManager.ShelfSelect(displayRack.displays[num].prefab);
 
 		for(int i = 0; i < size; i++) {
 			if(i == num)

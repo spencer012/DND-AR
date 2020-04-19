@@ -160,6 +160,7 @@ public class PlaceOrigin : MonoBehaviour {
 		}
 		else if(scene == MySceneManager.CHOOSINGPOS) { // after you press change pos in options menu
 			detected = true;
+			PopupManager.popupManager.DisplayPopup(PopupManager.FOUND, true);
 		}
 		else {
 			throw new System.Exception("Scene " + scene + " does not exist in PlaceOrigin");

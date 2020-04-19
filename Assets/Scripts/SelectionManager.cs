@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class BoardManager : MonoBehaviour {
+public class SelectionManager : MonoBehaviour {
 
 	public GameObject tilePrefab;
 	public GameObject[] tiles;
 	public List<GameObject> pieces;
 
-	private int[,] map = { { 1, 1, 1 }, { 1, 1, 1 }, { 1, 1, 1 } };
 	private float selectCooldown = 0;
 
 	public LayerMask raycastHit;
@@ -25,8 +24,11 @@ public class BoardManager : MonoBehaviour {
 
 	public float moveHeight = 1;
 
+	[HideInInspector]
+	public bool uiAction = false;
+
 	void Awake() {
-		GameManager.boardManager = this;
+		GameManager.selectionManager = this;
 	}
 
 	private RaycastHit hit;
@@ -88,9 +90,13 @@ public class BoardManager : MonoBehaviour {
 					}
 				}
 				else if (selectCooldown <= 0) { //if nothing was hit
-					if(selected != null) {
+					if (uiAction) {
+						uiAction = false;
+					} else if(selected != null) {
+						print("Select");
 						Deselect();
 					}
+					
 				}
 			} //touchphase began
 			break;
@@ -120,5 +126,19 @@ public class BoardManager : MonoBehaviour {
 			selected = null;
 			selectCooldown = selectDelay;
 		}
+	}
+
+	public void DeleteSelected() {
+		print("Got here");
+		if (selected != null && !shelfPlace) {
+			print("Deleted");
+			Destroy(selected);
+			selectedRenderer = null;
+			selected = null;
+		}
+	}
+
+	public void UIAction() {
+		uiAction = true;
 	}
 }
