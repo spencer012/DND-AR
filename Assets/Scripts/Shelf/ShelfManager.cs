@@ -94,6 +94,7 @@ public class ShelfManager : MonoBehaviour {
 			//print(touch.position.x + "|" + shelfBody.position + "|" + shelfBody.localPosition);
 			//print(accTouchDiff.y);
 			if((touch.position.x > shelfLeadingEdge && upState) || isScrolling) {
+				GameManager.selectionManager.UIAction();
 				if(touch.phase == TouchPhase.Began) {
 					isScrolling = true;
 					accTouchDiff = Vector2.zero;
@@ -178,6 +179,7 @@ public class ShelfManager : MonoBehaviour {
 	}
 
 	public void Pressed() {
+		GameManager.selectionManager.ShelfUIAction();
 		upState = !upState;
 	}
 }

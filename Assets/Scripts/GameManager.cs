@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour {
 	public static ShelfManager shelfManager;
 	public static SelectionManager selectionManager;
 
+	[SerializeField]
+	public TileMap tempMap;
+
 	void Start() {
 		if (gameManager == null) {
 			gameManager = this;
@@ -29,10 +32,13 @@ public class GameManager : MonoBehaviour {
 		placeOrigin = sessionOrigin.GetComponent<PlaceOrigin>();
 
 		//Screen.orientation = ScreenOrientation.Landscape;
+
+		PlaceBoard();
 	}
 	
 	public void PlaceBoard() {
-		board = Instantiate(boardPrefab, placeOrigin.startOriginPose.position, placeOrigin.startOriginPose.rotation);
-		board.transform.SetParent(PlaceOrigin.anchor.transform);
+		//board = Instantiate(boardPrefab, placeOrigin.startOriginPose.position, placeOrigin.startOriginPose.rotation, PlaceOrigin.anchor.transform);
+		board = Instantiate(boardPrefab);
+		board.GetComponent<BoardManager>().GenerateBoard(tempMap);
 	}
 }

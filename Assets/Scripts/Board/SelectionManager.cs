@@ -2,9 +2,7 @@
 using UnityEngine;
 
 public class SelectionManager : MonoBehaviour {
-
-	public GameObject tilePrefab;
-	public GameObject[] tiles;
+	
 	public List<GameObject> pieces;
 
 	private float selectCooldown = 0;
@@ -140,5 +138,11 @@ public class SelectionManager : MonoBehaviour {
 
 	public void UIAction() {
 		uiAction = true;
+	}
+	public void ShelfUIAction() {
+		if(shelfPlace) {
+			uiAction = true;
+			Deselect();
+		}
 	}
 }
