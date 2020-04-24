@@ -8,8 +8,17 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject sessionOrigin;
 
-	[HideInInspector]
+	//[HideInInspector]
 	public PlaceOrigin placeOrigin;
+
+	public GameObject boardPrefab, board;
+
+	public GameObject mainUI, mapSelectUI;
+
+	public static ShelfManager shelfManager;
+	public static SelectionManager selectionManager;
+	
+	public TileMap currentMap;
 
 	void Start() {
 		if (gameManager == null) {
@@ -20,9 +29,16 @@ public class GameManager : MonoBehaviour {
 		}
 
 		placeOrigin = sessionOrigin.GetComponent<PlaceOrigin>();
+
+		//Screen.orientation = ScreenOrientation.Landscape;
+
+		//PlaceBoard();
 	}
 	
-	void Update() {
-
+	public void PlaceBoard() {
+		if (board == null)
+			board = Instantiate(boardPrefab, placeOrigin.startOriginPose.position, placeOrigin.startOriginPose.rotation, PlaceOrigin.anchor.transform);
+		//board = Instantiate(boardPrefab);
+		board.GetComponent<BoardManager>().GenerateBoard(currentMap);
 	}
 }

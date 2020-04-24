@@ -1,0 +1,807 @@
+fileFormatVersion: 2
+guid: 930b628ef3325c0469219530041e570c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7043222649034421629
+    second: AR DND UI Sprites_0
+  - first:
+      213: -6281109931324112904
+    second: AR DND UI Sprites_1
+  - first:
+      213: -8092312286012489398
+    second: AR DND UI Sprites_2
+  - first:
+      213: 5492467037525872075
+    second: AR DND UI Sprites_3
+  - first:
+      213: 6253089962703953430
+    second: AR DND UI Sprites_4
+  - first:
+      213: 7382117171705638426
+    second: AR DND UI Sprites_5
+  - first:
+      213: 3844188005785287538
+    second: AR DND UI Sprites_6
+  - first:
+      213: 9100442578473083571
+    second: AR DND UI Sprites_7
+  - first:
+      213: -3970257891568444159
+    second: AR DND UI Sprites_8
+  - first:
+      213: 6459051695412722246
+    second: AR DND UI Sprites_9
+  - first:
+      213: 3058230194510739615
+    second: AR DND UI Sprites_10
+  - first:
+      213: -8597913046011645106
+    second: AR DND UI Sprites_11
+  - first:
+      213: -1236108743589191969
+    second: AR DND UI Sprites_12
+  - first:
+      213: -8325761479794769306
+    second: AR DND UI Sprites_13
+  - first:
+      213: -617623522302697372
+    second: AR DND UI Sprites_14
+  - first:
+      213: 1442142518357080492
+    second: AR DND UI Sprites_15
+  - first:
+      213: -5430459443177897859
+    second: AR DND UI Sprites_16
+  - first:
+      213: -5389864086616352736
+    second: AR DND UI Sprites_17
+  - first:
+      213: -6221436452194824124
+    second: AR DND UI Sprites_18
+  - first:
+      213: 1576013027907314251
+    second: AR DND UI Sprites_19
+  - first:
+      213: 6540720529950430006
+    second: AR DND UI Sprites_20
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 0
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AR DND UI Sprites_1
+      rect:
+        serializedVersion: 2
+        x: 1430
+        y: 3945
+        width: 363
+        height: 363
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 108.51564, y: -154.3518}
+        - {x: 148.47658, y: -118.02559}
+        - {x: 148.47658, y: -114.39297}
+        - {x: 166.64064, y: -96.229866}
+        - {x: 181.17189, y: -63.536278}
+        - {x: 184.8047, y: -52.638416}
+        - {x: 188.43752, y: -38.107933}
+        - {x: 192.07033, y: -16.312206}
+        - {x: 192.07033, y: 20.014004}
+        - {x: 188.43752, y: 41.809727}
+        - {x: 184.8047, y: 45.44235}
+        - {x: 181.17189, y: 67.238075}
+        - {x: 163.00783, y: 107.19691}
+        - {x: 108.51564, y: 161.68622}
+        - {x: 86.718765, y: 172.58408}
+        - {x: 68.5547, y: 179.84932}
+        - {x: 46.757824, y: 187.11456}
+        - {x: 24.96095, y: 190.7472}
+        - {x: -18.632797, y: 190.7472}
+        - {x: -40.429672, y: 187.11456}
+        - {x: -62.226547, y: 179.84932}
+        - {x: -80.39061, y: 172.58408}
+        - {x: -102.187485, y: 161.68622}
+        - {x: -156.67967, y: 107.19691}
+        - {x: -167.57811, y: 85.40118}
+        - {x: -174.84373, y: 67.238075}
+        - {x: -182.10936, y: 45.44235}
+        - {x: -185.74217, y: 23.646624}
+        - {x: -185.74217, y: -19.944826}
+        - {x: -182.10936, y: -38.107933}
+        - {x: -174.84373, y: -63.536278}
+        - {x: -160.31248, y: -96.229866}
+        - {x: -142.14842, y: -118.02559}
+        - {x: -116.718735, y: -143.45393}
+        - {x: -94.92186, y: -161.61703}
+        - {x: -69.49217, y: -172.51491}
+        - {x: -51.32811, y: -179.78015}
+        - {x: -36.79686, y: -183.41277}
+        - {x: -11.367173, y: -183.41277}
+        - {x: -7.7343607, y: -187.0454}
+        - {x: 43.125015, y: -183.41277}
+        - {x: 46.757824, y: -179.78015}
+        - {x: 75.82033, y: -172.51491}
+        - {x: 101.250015, y: -161.61703}
+      physicsShape: []
+      tessellationDetail: 0.65
+      bones: []
+      spriteID: 4ff91a01484e1414aa62e56062eb1ce1
+      internalID: -6281109931324112904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 3417
+        width: 3531
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 71, y: 48, z: 64, w: 48}
+      outline:
+      - - {x: 1723.6875, y: 100.53917}
+        - {x: -1749.2812, y: 100.53917}
+        - {x: -1771.0781, y: 89.641304}
+        - {x: -1771.0781, y: -52.03091}
+        - {x: -1760.1797, y: -77.45925}
+        - {x: 1701.8906, y: -77.45925}
+        - {x: 1730.9531, y: -59.29615}
+        - {x: 1730.9531, y: 75.110825}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3fa60ee042db654f8200d3313bd9f69
+      internalID: -8092312286012489398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_3
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 2335
+        width: 3466
+        height: 434
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 28, y: 27, z: 26, w: 27}
+      outline:
+      - - {x: -1770.3866, y: 232.30394}
+        - {x: -1770.3866, y: -214.50844}
+        - {x: 1713.4805, y: -214.50844}
+        - {x: 1713.4805, y: 232.30394}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96b46b1c9e3bcec4f96ef92bdf2c6667
+      internalID: 5492467037525872075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_4
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 1523
+        width: 3500
+        height: 489
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 46, y: 53, z: 48, w: 50}
+      outline:
+      - - {x: -1746.4725, y: 265.7046}
+        - {x: -1746.4725, y: -206.53613}
+        - {x: -1742.8397, y: -235.5971}
+        - {x: 1770.0898, y: -235.5971}
+        - {x: 1770.0898, y: 265.7046}
+      physicsShape: []
+      tessellationDetail: 0.04
+      bones: []
+      spriteID: b60924519adf30b45b97b0fcf7ab0b22
+      internalID: 6253089962703953430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1019
+        height: 1128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 397.79297, y: -263.36502}
+        - {x: 455.91797, y: -121.6928}
+        - {x: 463.1836, y: -38.14252}
+        - {x: 463.1836, y: 110.79494}
+        - {x: 383.26172, y: 296.0586}
+        - {x: 288.8086, y: 386.8741}
+        - {x: 143.4961, y: 481.32227}
+        - {x: 41.777344, y: 495.85275}
+        - {x: -92.63672, y: 495.85275}
+        - {x: -208.88672, y: 470.4244}
+        - {x: -343.30078, y: 394.13937}
+        - {x: -459.55078, y: 270.63025}
+        - {x: -509.5, y: 136.22328}
+        - {x: -509.5, y: -147.12114}
+        - {x: -437.7539, y: -292.426}
+        - {x: -350.5664, y: -383.24152}
+        - {x: -223.41797, y: -466.79178}
+        - {x: -114.43359, y: -492.22012}
+        - {x: 45.410156, y: -492.22012}
+        - {x: 136.23047, y: -470.4244}
+        - {x: 212.51953, y: -441.36343}
+        - {x: 346.9336, y: -332.38483}
+      physicsShape: []
+      tessellationDetail: 0.12
+      bones: []
+      spriteID: 0f5e29d16b58e9743ab762ba1b78e373
+      internalID: 7382117171705638426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_6
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 0
+        width: 949
+        height: 1139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d25d260dbce0a5649adc60892ef62501
+      internalID: 3844188005785287538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_7
+      rect:
+        serializedVersion: 2
+        x: 2010
+        y: 0
+        width: 1031
+        height: 1163
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4634de0147e453949b231453e5dfd3e7
+      internalID: 9100442578473083571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_8
+      rect:
+        serializedVersion: 2
+        x: 3976
+        y: 123
+        width: 1423
+        height: 1868
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 45, y: 44, z: 46, w: 46}
+      outline:
+      - - {x: -724.81616, y: 986.2566}
+        - {x: -724.81616, y: -895.44104}
+        - {x: 710.1448, y: -895.44104}
+        - {x: 710.1448, y: 986.2566}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec7b96157d8b10a45b016b5dd73dd27e
+      internalID: -3970257891568444159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_9
+      rect:
+        serializedVersion: 2
+        x: 5615
+        y: 1314
+        width: 1915
+        height: 310
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 39, y: 42, z: 42, w: 41}
+      outline:
+      - - {x: -976.06244, y: 173.74422}
+        - {x: -1001.4921, y: 151.94849}
+        - {x: -1001.4921, y: -135.02856}
+        - {x: -997.8593, y: -156.82428}
+        - {x: 909.3672, y: -156.82428}
+        - {x: 931.16406, y: -138.66118}
+        - {x: 931.16406, y: 173.74422}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e93e3d4f2e188bc43ac4680ed3e0f1ab
+      internalID: 6459051695412722246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_10
+      rect:
+        serializedVersion: 2
+        x: 4866
+        y: 2291
+        width: 3089
+        height: 2295
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 134.26195, y: 1097.6841}
+        - {x: -214.48804, y: 1097.6841}
+        - {x: -1007.5, y: 435.5}
+        - {x: -1471.4412, y: -337.20117}
+        - {x: -1471.4412, y: -413.48624}
+        - {x: -770.30835, y: -1118.2147}
+        - {x: 744.57446, y: -1118.2147}
+        - {x: 1376.6838, y: -428.0167}
+        - {x: 1376.6838, y: -348.09906}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8a7ab67d1ae9f74ba595065e25e418e
+      internalID: 3058230194510739615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_11
+      rect:
+        serializedVersion: 2
+        x: 8272
+        y: 1424
+        width: 422
+        height: 2482
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 204.50801, y: 1271.164}
+        - {x: 175.44551, y: 1256.6334}
+        - {x: -220.53105, y: 820.7189}
+        - {x: -220.53105, y: -774.00165}
+        - {x: 171.8127, y: -1228.0793}
+        - {x: 215.40645, y: -1228.0793}
+        - {x: 222.67207, y: -1209.9161}
+        - {x: 222.67207, y: 1267.5312}
+        - {x: 219.03926, y: 1271.164}
+      physicsShape: []
+      tessellationDetail: 0.16
+      bones: []
+      spriteID: 779e88aff974466438345e23d5eb3117
+      internalID: -8597913046011645106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_12
+      rect:
+        serializedVersion: 2
+        x: 9750
+        y: 1689
+        width: 1250
+        height: 1250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 56, y: 51, z: 51, w: 51}
+      outline:
+      - - {x: -648.5936, y: 685.0886}
+        - {x: -659.49207, y: 663.29285}
+        - {x: -659.49207, y: -579.0635}
+        - {x: 593.82825, y: -579.0635}
+        - {x: 604.7267, y: -557.26776}
+        - {x: 604.7267, y: 685.0886}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fd4ed147f459174882ba4f135082485
+      internalID: -1236108743589191969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_0
+      rect:
+        serializedVersion: 2
+        x: 12849
+        y: 61
+        width: 2315
+        height: 4506
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 9, y: 9, z: 8, w: 9}
+      outline:
+      - - {x: -1151.488, y: 2282.6533}
+        - {x: -1158.7537, y: 2275.388}
+        - {x: -1158.7537, y: -2243.5923}
+        - {x: 1177.1448, y: -2243.5923}
+        - {x: 1177.1448, y: 2275.388}
+        - {x: 1169.8792, y: 2282.6533}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4fffc814c494ca4db615d4084509876
+      internalID: -7043222649034421629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_13
+      rect:
+        serializedVersion: 2
+        x: 16083
+        y: 3476
+        width: 671
+        height: 667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -270.1053, y: 284.74258}
+        - {x: -270.1053, y: -289.21152}
+        - {x: -262.83966, y: -296.47678}
+        - {x: 300.24628, y: -296.47678}
+        - {x: 307.5119, y: -292.84415}
+        - {x: 307.5119, y: 284.74258}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 837e2a81abf05144f8a38fa9eea26a81
+      internalID: -8325761479794769306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_14
+      rect:
+        serializedVersion: 2
+        x: 16881
+        y: 3476
+        width: 1171
+        height: 1093
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -512.90594, y: 508.14877}
+        - {x: -512.90594, y: -505.35248}
+        - {x: 507.91437, y: -505.35248}
+        - {x: 507.91437, y: 508.14877}
+        - {x: 500.64874, y: 515.414}
+        - {x: -505.64032, y: 515.414}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 659881885b8f2d342bb0729a63a01753
+      internalID: -617623522302697372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_15
+      rect:
+        serializedVersion: 2
+        x: 17783
+        y: 251
+        width: 2996
+        height: 2761
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 863.1761, y: 1259.0524}
+        - {x: -535.45667, y: 1259.0524}
+        - {x: -1331.0426, y: 946.647}
+        - {x: -1331.0426, y: 478.03885}
+        - {x: -1356, y: 239.5}
+        - {x: -1389, y: 82.5}
+        - {x: -1331.0426, y: -1232.9255}
+        - {x: -1004.0895, y: -1334.6389}
+        - {x: 1262.7855, y: -1334.6389}
+        - {x: 1262.7855, y: 924.8512}
+        - {x: 1222.8246, y: 1146.441}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43fa2f1a1b1b04345b5b81c1ff08a6df
+      internalID: 1442142518357080492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_16
+      rect:
+        serializedVersion: 2
+        x: 21190
+        y: 1083
+        width: 1205
+        height: 1540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 27.050972, y: 630.7388}
+        - {x: -2.011528, y: 630.7388}
+        - {x: -521.5037, y: -273.78384}
+        - {x: -521.5037, y: -342.80365}
+        - {x: -368.92557, y: -687.90265}
+        - {x: 412.1291, y: -687.90265}
+        - {x: 561.0744, y: -339.17102}
+        - {x: 561.0744, y: -273.78384}
+        - {x: 67.01191, y: 601.6778}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70b279b9147a0c4409938ad2a5b8a4cc
+      internalID: -5430459443177897859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_17
+      rect:
+        serializedVersion: 2
+        x: 22565
+        y: 1111
+        width: 1386
+        height: 3477
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 88.78927, y: 1626.8322}
+        - {x: 74.25802, y: 1623.1996}
+        - {x: -448.86697, y: 715.0443}
+        - {x: -448.86697, y: 627.8614}
+        - {x: -296.28885, y: -1678.8529}
+        - {x: 484.76584, y: -1678.8529}
+        - {x: 630.0783, y: 627.8614}
+        - {x: 630.0783, y: 718.67694}
+        - {x: 103.32052, y: 1626.8322}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 326e71313f6f51540ada5fe252373210
+      internalID: -5389864086616352736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_18
+      rect:
+        serializedVersion: 2
+        x: 24501
+        y: 2707
+        width: 1420
+        height: 1285
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 40, y: 39, z: 42, w: 44}
+      outline:
+      - - {x: -724.9962, y: 667.8329}
+        - {x: -724.9962, y: -632.6454}
+        - {x: 713.59753, y: -632.6454}
+        - {x: 713.59753, y: 642.40454}
+        - {x: 691.80066, y: 667.8329}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98136bb039c97f849a003000f16c2c80
+      internalID: -6221436452194824124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_19
+      rect:
+        serializedVersion: 2
+        x: 28117
+        y: 3003
+        width: 1320
+        height: 843
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 26, y: 26, z: 24, w: 25}
+      outline:
+      - - {x: -680.2956, y: -404.1956}
+        - {x: 660.2122, y: -404.1956}
+        - {x: 660.2122, y: 456.73557}
+        - {x: -680.2956, y: 456.73557}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 216877ec60c827e4eaeea9fe6c3945f1
+      internalID: 1576013027907314251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AR DND UI Sprites_20
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 3693
+        width: 3520
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 69, y: 43, z: 57, w: 46}
+      outline:
+      - - {x: 1723.8905, y: 72.78678}
+        - {x: 1698.4608, y: 94.582504}
+        - {x: 1687.5624, y: 98.215126}
+        - {x: -1727.2812, y: 98.215126}
+        - {x: -1745.4453, y: 90.94988}
+        - {x: -1763.6094, y: 69.15416}
+        - {x: -1767.2422, y: 54.623672}
+        - {x: -1767.2422, y: -36.19185}
+        - {x: -1763.6094, y: -50.722332}
+        - {x: -1745.4453, y: -72.51806}
+        - {x: -1727.2812, y: -79.7833}
+        - {x: 1687.5624, y: -79.7833}
+        - {x: 1698.4608, y: -76.15068}
+        - {x: 1723.8905, y: -54.354954}
+      physicsShape: []
+      tessellationDetail: 1
+      bones: []
+      spriteID: 8a319cbe5c599674db290c21ee1a3db1
+      internalID: 6540720529950430006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

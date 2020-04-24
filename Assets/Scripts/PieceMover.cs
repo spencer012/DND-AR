@@ -5,47 +5,56 @@ using UnityEngine;
 public class PieceMover : MonoBehaviour {
 
 	public static float timeToMove = 1,
-		upDistance = 1;
+		upDistance = 1f;
 
-	private static Vector3 myNull = new Vector3(-10, -10, -10);
-	private Vector3 moveTo = myNull,
-		upOrig = myNull, upMoved = myNull, orig = myNull;
+	
+	private Vector3 moveTo,	upOrig, upMoved, orig;
+	private int step = 0;
 
 	private float timeLerp = 0;
 
 
 	void Update() {
-		if (moveTo != myNull) {
-			timeLerp += Time.deltaTime / timeToMove;
-		}
+		timeLerp += Time.deltaTime / timeToMove;
 
-		if(upOrig != myNull) {
-			transform.position = Vector3.Lerp(orig, upOrig, timeLerp);
+		if(step == 0) { //go to each position one at a time
+			transform.localPosition = Vector3.Lerp(orig, upOrig, timeLerp);
 			if (timeLerp >= 1) {
-				upOrig = myNull;
+				step++;
 				timeLerp = 0;
+				//print("Orig done");
 			}
 		}
-		else if(upMoved != myNull) {
-			transform.position = Vector3.Lerp(upOrig, upMoved, timeLerp);
+		else if(step == 1) {
+			transform.localPosition = Vector3.Lerp(upOrig, upMoved, timeLerp);
 			if(timeLerp >= 1) {
-				upOrig = myNull;
+				step++;
 				timeLerp = 0;
+				//print("Moved done");
 			}
 		}
-		else if(moveTo != myNull) {
-			transform.position = Vector3.Lerp(upMoved, moveTo, timeLerp);
+		else if(step == 2) {
+			transform.localPosition = Vector3.Lerp(upMoved, moveTo, timeLerp);
 			if(timeLerp >= 1) {
-				transform.position = moveTo;
+				transform.localPosition = moveTo;
+				tag = "Piece";
+				//print("moveTo done");
 				Destroy(this);
 			}
 		}
 	}
 
 	public void MoveTo(Vector3 pos) {
+		if(moveTo == pos) {
+			return;
+		}
 		moveTo = pos;
-		upOrig = transform.position + Vector3.up * upDistance;
-		upMoved = pos + Vector3.up * upDistance;
-		orig = transform.position;
+		upMoved = pos + (Vector3.up * upDistance);
+		upOrig = new Vector3(transform.localPosition.x, upMoved.y, transform.localPosition.z);
+		orig = transform.localPosition;
+		if (tag == "Moving") {
+			step++;
+		}
+		tag = "Moving";
 	}
 }
