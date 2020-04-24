@@ -80,7 +80,7 @@ public class ShelfManager : MonoBehaviour {
 	void Scrolling() {
 		Vector3 changedPos = displayGroup.position;
 
-		shelfLeadingEdge = shelfBody.rect.x - shelfBody.rect.width;
+		shelfLeadingEdge = shelfBody.localPosition.x - shelfBody.rect.width;
 
 		if(!isScrolling && velocity != 0) {
 			changedPos += Vector3.up * (velocity * Time.deltaTime);

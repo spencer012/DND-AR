@@ -134,9 +134,9 @@ public class SelectionManager : MonoBehaviour {
 	}
 
 	public void DeleteSelected() {
-		print("Got here");
+		//print("Got here");
 		if(selected != null && !shelfPlace) {
-			print("Deleted");
+			//print("Deleted");
 			Destroy(selected);
 			selectedRenderer = null;
 			selected = null;

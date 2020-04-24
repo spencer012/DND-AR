@@ -36,7 +36,8 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	public void PlaceBoard() {
-		board = Instantiate(boardPrefab, placeOrigin.startOriginPose.position, placeOrigin.startOriginPose.rotation, PlaceOrigin.anchor.transform);
+		if (board == null)
+			board = Instantiate(boardPrefab, placeOrigin.startOriginPose.position, placeOrigin.startOriginPose.rotation, PlaceOrigin.anchor.transform);
 		//board = Instantiate(boardPrefab);
 		board.GetComponent<BoardManager>().GenerateBoard(currentMap);
 	}

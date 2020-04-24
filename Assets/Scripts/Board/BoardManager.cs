@@ -18,9 +18,10 @@ public class BoardManager : MonoBehaviour {
 	}
 
 	public void ClearBoard() {
+		print("ClearBoard");
 		for(int x = 0; x < map.width; x++) {
 			for(int y = 0; y < map.length; y++) {
-				Destroy(tileObjects[x, y]);
+				Destroy(tileObjects[x, y].gameObject);
 			}
 		}
 		tileObjects = null;
@@ -31,9 +32,6 @@ public class BoardManager : MonoBehaviour {
 	}
 
 	public void GenerateBoard(TileMap map) {
-		if (this.map == map) {
-			return;
-		}
 		if (tileObjects != null) {
 			ClearBoard();
 		}
