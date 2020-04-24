@@ -24,6 +24,12 @@ public class OptionsDropdown : MonoBehaviour {
 	}
 
 	public void OriginPlace() {
-		MySceneManager.sceneManager.ChangeScene(MySceneManager.CHOOSINGPOS);
+		GameManager.selectionManager.UIAction();
+		PopupManager.popupManager.Confirm(PopupManager.POSCHANGE);
+	}
+
+	public void MapChange() {
+		GameManager.selectionManager.UIAction();
+		PopupManager.popupManager.Confirm(PopupManager.MAPCHANGE);
 	}
 }

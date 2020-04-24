@@ -36,3 +36,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     prefab: {fileID: 8122323406187197756, guid: 53ea606fa53038740b3399e3cf564971,
       type: 3}
+  - name: Orc
+    sprite: {fileID: 0}
+    prefab: {fileID: 6140507378134346126, guid: 73983accea432e540a2c95409b6b9bb5,
+      type: 3}

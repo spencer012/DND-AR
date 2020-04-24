@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MySceneManager : MonoBehaviour {
 	public static MySceneManager sceneManager;
 
-	public static int START = 0, CHOOSINGSTART = 1, CHOOSINGPOS = 2, MAIN = 3, MAPMAKER = 4;
+	public static int START = 0, CHOOSINGSTART = 1, CHOOSINGPOS = 2, MAIN = 3, MAPMAKER = 4, MAPSELECTOR = 5;
 
 	private static int currentScene = START;
 	public static int CurrentScene { get => currentScene; }
@@ -34,7 +34,7 @@ public class MySceneManager : MonoBehaviour {
 			yield return SceneManager.LoadSceneAsync(0);
 			yield break;
 		}
-		else if(currentScene == START && scene > START && scene <= MAPMAKER) {
+		else if(currentScene == START && scene > START) {
 			//print("2222222222222222222222");
 			yield return SceneManager.LoadSceneAsync(1);
 			yield return null;
@@ -58,6 +58,9 @@ public class MySceneManager : MonoBehaviour {
 		}
 		else if(scene == MAPMAKER) {
 
+		}
+		else if(scene == MAPSELECTOR) {
+			GameManager.gameManager.mapSelectUI.SetActive(true);
 		}
 		else {
 			throw new System.Exception("Scene " + scene + " does not exist in MySceneManager");

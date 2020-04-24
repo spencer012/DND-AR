@@ -13,13 +13,12 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject boardPrefab, board;
 
-	public GameObject mainUI;
+	public GameObject mainUI, mapSelectUI;
 
 	public static ShelfManager shelfManager;
 	public static SelectionManager selectionManager;
-
-	[SerializeField]
-	public TileMap tempMap;
+	
+	public TileMap currentMap;
 
 	void Start() {
 		if (gameManager == null) {
@@ -33,12 +32,12 @@ public class GameManager : MonoBehaviour {
 
 		//Screen.orientation = ScreenOrientation.Landscape;
 
-		PlaceBoard();
+		//PlaceBoard();
 	}
 	
 	public void PlaceBoard() {
-		//board = Instantiate(boardPrefab, placeOrigin.startOriginPose.position, placeOrigin.startOriginPose.rotation, PlaceOrigin.anchor.transform);
-		board = Instantiate(boardPrefab);
-		board.GetComponent<BoardManager>().GenerateBoard(tempMap);
+		board = Instantiate(boardPrefab, placeOrigin.startOriginPose.position, placeOrigin.startOriginPose.rotation, PlaceOrigin.anchor.transform);
+		//board = Instantiate(boardPrefab);
+		board.GetComponent<BoardManager>().GenerateBoard(currentMap);
 	}
 }

@@ -10,7 +10,7 @@ public class TileMap {
 
 	public TileMap(int width, int length, Tile[] tiles) {
 		if(width * length != tiles.Length)
-			throw new System.Exception("Array size does not equal initalized size");
+			throw new System.Exception("Array size does not equal initialized size");
 		this.width = width;
 		this.length = length;
 		this.tiles = tiles;

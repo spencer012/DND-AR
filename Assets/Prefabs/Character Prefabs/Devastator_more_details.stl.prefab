@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 254080903941278648}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 586554928186745569}
   m_RootOrder: 0
@@ -87,7 +87,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 586554928186745569}
-  - component: {fileID: 5573600740587036979}
+  - component: {fileID: 1855763294423370925}
   m_Layer: 0
   m_Name: Devastator_more_details.stl
   m_TagString: Piece
@@ -103,15 +103,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4501494344330875122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.871906, y: -0.13, z: -2.3067427}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 857463588437876896}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5573600740587036979
-BoxCollider:
+--- !u!136 &1855763294423370925
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -120,6 +120,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.7998981, y: 0.17138863, z: 1.9099059}
-  m_Center: {x: -0.10331535, y: -0.077404976, z: 0.022484064}
+  m_Radius: 0.8309659
+  m_Height: 1.9695953
+  m_Direction: 1
+  m_Center: {x: -0.038661458, y: 0.48479754, z: -0.0109737115}

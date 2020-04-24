@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5568246185409654390}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children: []
   m_Father: {fileID: 5107948127641798447}
   m_RootOrder: 0
@@ -87,7 +87,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5107948127641798447}
-  - component: {fileID: 828879462385619297}
+  - component: {fileID: 3044081633433393179}
   m_Layer: 0
   m_Name: Elf_Wizard2.stl
   m_TagString: Piece
@@ -103,15 +103,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8122323406187197756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.402891, y: 4.02, z: -4.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 4982843537437394286}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &828879462385619297
-BoxCollider:
+--- !u!136 &3044081633433393179
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -120,6 +120,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.2543535, y: 0.20718575, z: 1.2548537}
-  m_Center: {x: -0.002225399, y: 0.09985447, z: -0.032805204}
+  m_Radius: 0.5803718
+  m_Height: 2.435537
+  m_Direction: 1
+  m_Center: {x: -0.004727741, y: 0.71776867, z: 0}

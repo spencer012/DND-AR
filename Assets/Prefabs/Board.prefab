@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4052013518688343286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 900125960245043053}
   m_Father: {fileID: 0}
@@ -52,6 +52,7 @@ MonoBehaviour:
   selectedMaterial: {fileID: 2100000, guid: faccf0b0e85c10b46ace527f14f26922, type: 2}
   moveHeight: 1
   uiAction: 0
+  boardManager: {fileID: 1259745563090518067}
 --- !u!114 &1259745563090518067
 MonoBehaviour:
   m_ObjectHideFlags: 0

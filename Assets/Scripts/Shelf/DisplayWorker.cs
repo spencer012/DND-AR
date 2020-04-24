@@ -57,6 +57,6 @@ public class DisplayWorker : MonoBehaviour, IPointerUpHandler, IPointerDownHandl
 		outline.enabled = active;
 		selected = active;
 		//temp
-		Invoke("Selected", 1);
+		//Invoke("Selected", 1);
 	}
 }

@@ -10,22 +10,42 @@ public class BoardManager : MonoBehaviour {
 
 	private TileMap map;
 
-	void Start() {
+	private GameObject[,] tileObjects = null;
+	private List<GameObject> pieces = new List<GameObject>();
 
+	public void AddPiece(GameObject g) {
+		pieces.Add(g);
 	}
-	
-	void Update() {
 
+	public void ClearBoard() {
+		for(int x = 0; x < map.width; x++) {
+			for(int y = 0; y < map.length; y++) {
+				Destroy(tileObjects[x, y]);
+			}
+		}
+		tileObjects = null;
+		foreach(GameObject g in pieces) {
+			Destroy(g);
+		}
+		pieces.Clear();
 	}
 
 	public void GenerateBoard(TileMap map) {
+		if (this.map == map) {
+			return;
+		}
+		if (tileObjects != null) {
+			ClearBoard();
+		}
+		tileObjects = new GameObject[map.width, map.length];
+		//occupied = new bool[map.width, map.length];
 		this.map = map;
 		for(int x = 0; x < map.width; x++) {
 			for(int y = 0; y < map.length; y++) {
 				map[x, y].x = x;
 				map[x, y].y = y;
 
-				GameObject tile = MakeTile(map[x, y]);
+				tileObjects[x,y] = MakeTile(map[x, y]);
 			}
 		}
 	}
@@ -55,42 +75,26 @@ public class BoardManager : MonoBehaviour {
 		g.transform.GetChild(0).localScale = new Vector3(1, s, 1);
 		g.transform.GetChild(0).localPosition = new Vector3(0, -s / 2, 0);
 
-		return null;
+		return g;
 	}
 
-	void TextureCube(GameObject g) {
-		Mesh mesh = g.GetComponent<MeshFilter>().mesh;
-		Vector2[] UVs = new Vector2[mesh.vertices.Length];
-		// Front
-		UVs[0] = new Vector2(0.0f, 0.0f);
-		UVs[1] = new Vector2(0.333f, 0.0f);
-		UVs[2] = new Vector2(0.0f, 0.333f);
-		UVs[3] = new Vector2(0.333f, 0.333f);
-		// Top
-		UVs[4] = new Vector2(0.334f, 0.333f);
-		UVs[5] = new Vector2(0.666f, 0.333f);
-		UVs[8] = new Vector2(0.334f, 0.0f);
-		UVs[9] = new Vector2(0.666f, 0.0f);
-		// Back
-		UVs[6] = new Vector2(1.0f, 0.0f);
-		UVs[7] = new Vector2(0.667f, 0.0f);
-		UVs[10] = new Vector2(1.0f, 0.333f);
-		UVs[11] = new Vector2(0.667f, 0.333f);
-		// Bottom
-		UVs[12] = new Vector2(0.0f, 0.334f);
-		UVs[13] = new Vector2(0.0f, 0.666f);
-		UVs[14] = new Vector2(0.333f, 0.666f);
-		UVs[15] = new Vector2(0.333f, 0.334f);
-		// Left
-		UVs[16] = new Vector2(0.334f, 0.334f);
-		UVs[17] = new Vector2(0.334f, 0.666f);
-		UVs[18] = new Vector2(0.666f, 0.666f);
-		UVs[19] = new Vector2(0.666f, 0.334f);
-		// Right        
-		UVs[20] = new Vector2(0.667f, 0.334f);
-		UVs[21] = new Vector2(0.667f, 0.666f);
-		UVs[22] = new Vector2(1.0f, 0.666f);
-		UVs[23] = new Vector2(1.0f, 0.334f);
-		mesh.uv = UVs;
+	/*
+	public string PositionToIndex(float x, float y) {
+		x += ((map.width - 1) / 2f);
+		y += ((map.length - 1) / 2f);
+		return x + "," + y;
 	}
+
+	private bool[,] occupied;
+
+	public bool IsOccupied(float x, float y) {
+		x += ((map.width - 1) / 2f);
+		y += ((map.length - 1) / 2f);
+		return occupied[(int)x, (int)y];
+	}
+	public void Occupy(float x, float y, bool yes) {
+		x += ((map.width - 1) / 2f);
+		y += ((map.length - 1) / 2f);
+		occupied[(int)x, (int)y] = yes;
+	}*/
 }

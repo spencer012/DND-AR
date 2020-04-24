@@ -31,6 +31,8 @@ public class PlaceOrigin : MonoBehaviour {
 	private float totalMovement = 0;
 	bool detected = false;
 
+	GameObject mainPlane;
+
 	void Start() {
 		raycastManager = GetComponent<ARRaycastManager>();
 		refManager = GetComponent<ARReferencePointManager>();
@@ -82,6 +84,11 @@ public class PlaceOrigin : MonoBehaviour {
 								planeManager.detectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.None;
 
 								PopupManager.popupManager.DisplayPopup(PopupManager.FOUND, false);
+
+								mainPlane = plane.gameObject;
+								
+								//mainPlane.GetComponent<MeshRenderer>().enabled = false;
+								//mainPlane.GetComponent<LineRenderer>().enabled = false;
 							}
 						}
 						else {
@@ -95,6 +102,7 @@ public class PlaceOrigin : MonoBehaviour {
 			}
 		}
 		else if(adjust) { //if it is the second phase
+			CheckMarker();
 			marker.transform.position = startOriginPose.position + (Vector3.up * height / 100);
 			marker.transform.localEulerAngles = startOriginPose.rotation.eulerAngles + new Vector3(0, rotation, 0);
 			marker.transform.localScale = new Vector3(scale, scale, scale) * defaultScale;
@@ -107,7 +115,13 @@ public class PlaceOrigin : MonoBehaviour {
 				done = adjust = false;
 				confirmUI.SetActive(false);
 
-				MySceneManager.sceneManager.ChangeScene(MySceneManager.MAIN);
+
+				if(MySceneManager.CurrentScene == MySceneManager.CHOOSINGSTART) {
+					MySceneManager.sceneManager.ChangeScene(MySceneManager.MAPSELECTOR);
+				}
+				else if(MySceneManager.CurrentScene == MySceneManager.CHOOSINGPOS) {
+					MySceneManager.sceneManager.ChangeScene(MySceneManager.MAIN);
+				}
 			}
 		}
 	}
@@ -138,7 +152,24 @@ public class PlaceOrigin : MonoBehaviour {
 
 	public void Back() { //pressed the back button
 		cooldown = cooldownDelay;
-		ChangeScene(MySceneManager.CHOOSINGSTART);
+
+		placed = adjust = done = false;
+		confirmUI.SetActive(false);
+
+		if(mainPlane != null) {
+			//mainPlane.GetComponent<MeshRenderer>().enabled = true;
+			//mainPlane.GetComponent<LineRenderer>().enabled = true;
+		}
+		foreach(ARPlane pl in planeManager.trackables) {
+			pl.gameObject.SetActive(true);
+		}
+		planeManager.detectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.Horizontal;
+		//Input.gyro.enabled = true;
+
+		if(anchor != null) {
+			Destroy(anchor);
+		}
+		CheckMarker();
 	}
 
 	public void HeightSlider(float v) {
@@ -169,11 +200,15 @@ public class PlaceOrigin : MonoBehaviour {
 		placed = adjust = done = false;
 		confirmUI.SetActive(false);
 
+		if (mainPlane != null) {
+			mainPlane.GetComponent<MeshRenderer>().enabled = true;
+			mainPlane.GetComponent<LineRenderer>().enabled = true;
+		}
 		foreach(ARPlane pl in planeManager.trackables) {
 			pl.gameObject.SetActive(true);
 		}
 		planeManager.detectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.Horizontal;
-		Input.gyro.enabled = true;
+		//Input.gyro.enabled = true;
 
 		if(anchor != null) {
 			Destroy(anchor);

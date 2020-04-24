@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3605327229103186336}
-  - component: {fileID: 5532294966995453190}
+  - component: {fileID: 3109604487848855517}
   m_Layer: 0
   m_Name: Dragonborn_Sorcerer_-_Psion_with_Glaive.stl
   m_TagString: Piece
@@ -25,15 +25,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311852128172495795}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.314663, y: 4.02, z: -4.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 3588590504998446049}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5532294966995453190
-BoxCollider:
+--- !u!136 &3109604487848855517
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -42,9 +42,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.3240824, y: 0.2418232, z: 1.3152647}
-  m_Center: {x: 0.033339977, y: 0.06332302, z: -0.05317211}
+  m_Radius: 0.5865351
+  m_Height: 2.253114
+  m_Direction: 1
+  m_Center: {x: -0.026930869, y: 0.62655663, z: -0.018910963}
 --- !u!1 &4156193150036019449
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,7 +73,7 @@ Transform:
   m_GameObject: {fileID: 4156193150036019449}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children: []
   m_Father: {fileID: 3605327229103186336}
   m_RootOrder: 0

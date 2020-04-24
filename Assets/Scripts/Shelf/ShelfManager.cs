@@ -80,7 +80,7 @@ public class ShelfManager : MonoBehaviour {
 	void Scrolling() {
 		Vector3 changedPos = displayGroup.position;
 
-		shelfLeadingEdge = shelfBody.position.x - shelfBody.sizeDelta.y;
+		shelfLeadingEdge = shelfBody.rect.x - shelfBody.rect.width;
 
 		if(!isScrolling && velocity != 0) {
 			changedPos += Vector3.up * (velocity * Time.deltaTime);
@@ -113,9 +113,6 @@ public class ShelfManager : MonoBehaviour {
 				else {
 					if(accTouchDiff.y > 40) {
 						velocity = touch.deltaPosition.y * 10;
-					}
-					else {
-
 					}
 					isScrolling = false;
 					canHover = true;
@@ -154,7 +151,7 @@ public class ShelfManager : MonoBehaviour {
 
 	void InitDisplay() {
 		displayWorkers = new DisplayWorker[size];
-		float padding = (shelfBody.sizeDelta.x - (displayPrefab.GetComponent<RectTransform>().sizeDelta.y * displaysFit)) / (displaysFit);
+		float padding = (Screen.height - (displayPrefab.GetComponent<RectTransform>().sizeDelta.y * displaysFit)) / (displaysFit);
 		//print(padding);
 		float placePos = 0;
 
@@ -169,12 +166,12 @@ public class ShelfManager : MonoBehaviour {
 
 			RectTransform rect = displayWorkers[i].rectTransform;
 			placePos += (padding / 2) + (rect.sizeDelta.y / 2);
-			rect.localPosition += Vector3.right * placePos;
+			rect.localPosition = Vector3.up * placePos;
 			placePos += (padding / 2) + (rect.sizeDelta.y / 2);
 		}
 		totalLength = placePos;
 
-		topLimit = -totalLength + shelfBody.sizeDelta.x;
+		topLimit = -totalLength + Screen.height;
 		botLimit = 0;
 	}
 

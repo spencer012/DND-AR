@@ -2,7 +2,7 @@
 using UnityEngine;
 
 public class SelectionManager : MonoBehaviour {
-	
+
 	public List<GameObject> pieces;
 
 	private float selectCooldown = 0;
@@ -25,52 +25,55 @@ public class SelectionManager : MonoBehaviour {
 	[HideInInspector]
 	public bool uiAction = false;
 
+	public BoardManager boardManager;
+
 	void Awake() {
 		GameManager.selectionManager = this;
 	}
 
 	private RaycastHit hit;
-	
+
 	void Update() {
-		if (selectCooldown > 0) {
+		if(selectCooldown > 0) {
 			selectCooldown -= Time.deltaTime;
 		}
 		TouchInput();
 	}
 
 	void TouchInput() {
-		foreach (Touch touch in Input.touches) {
-			if (touch.phase == TouchPhase.Began) {
-				if (selectCooldown > 0) { //if it was touched before the cooldown was ended
+		foreach(Touch touch in Input.touches) {
+			if(touch.phase == TouchPhase.Began) {
+				if(selectCooldown > 0) { //if it was touched before the cooldown was ended
 					selectCooldown = Mathf.Min(selectCooldown * 1.5f, selectDelay);
 				}
-				if (selectCooldown <= 0 && Physics.Raycast(Camera.main.ScreenPointToRay(touch.position), out hit, raycastHit)) {
+				if(selectCooldown <= 0 && Physics.Raycast(Camera.main.ScreenPointToRay(touch.position), out hit, raycastHit)) {
 					GameObject gHit = hit.collider.gameObject;
-					if (gHit.tag.Equals("Piece") || gHit.tag.Equals("Moving")) { //if it is a piece on the board
-						if (selected == null) { //if nothing is selected
+					if(gHit.tag.Equals("Piece") || gHit.tag.Equals("Moving")) { //if it is a piece on the board
+						if(selected == null) { //if nothing is selected
 							selectedRenderer = gHit.GetComponentInChildren<Renderer>();
 							prevMaterial = selectedRenderer.material;
 							selectedRenderer.material = selectedMaterial;
 							selected = gHit;
 							selectCooldown = selectDelay;
 						}
-						else if (!gHit.Equals(selected)) { //if something else is selected
-							Deselect();
-							selectedRenderer = gHit.GetComponentInChildren<Renderer>();
-							prevMaterial = selectedRenderer.material;
-							selectedRenderer.material = selectedMaterial;
-							selected = gHit;
-							selectCooldown = selectDelay;
-
+						else if(!gHit.Equals(selected)) { //if something else is selected
+							if(Deselect()) {
+								selectedRenderer = gHit.GetComponentInChildren<Renderer>();
+								prevMaterial = selectedRenderer.material;
+								selectedRenderer.material = selectedMaterial;
+								selected = gHit;
+								selectCooldown = selectDelay;
+							}
 						}
-						else if (gHit.Equals(selected)) { //if the selected piece is selected
+						else if(gHit.Equals(selected)) { //if the selected piece is selected
 							Deselect();
 						}
 					}
-					else if (gHit.tag.Equals("Tile") && selected != null) { //after it has selected a piece, if it is selecting a tile
+					else if(gHit.tag.Equals("Tile") && selected != null) { //after it has selected a piece, if it is selecting a tile
 						if(shelfPlace) {
 							GameObject tmp = Instantiate(selected, transform);
-							tmp.transform.localPosition = gHit.transform.localPosition + (Vector3.up * gHit.transform.localScale.y);
+							tmp.transform.localPosition = gHit.transform.parent.localPosition;
+							boardManager.AddPiece(tmp);
 							Deselect();
 						}
 						else {
@@ -81,20 +84,17 @@ public class SelectionManager : MonoBehaviour {
 							else {
 								tmp = selected.AddComponent<PieceMover>();
 							}
-							tmp.MoveTo(gHit.transform.localPosition + (Vector3.up * gHit.transform.localScale.y * moveHeight));
+							tmp.MoveTo(gHit.transform.parent.localPosition);
 
 							Deselect();
 						}
 					}
-				}
-				else if (selectCooldown <= 0) { //if nothing was hit
-					if (uiAction) {
-						uiAction = false;
-					} else if(selected != null) {
-						print("Select");
+					else if(selectCooldown <= 0) { //if something not part of the board was hit
 						Deselect();
 					}
-					
+				}
+				else if(selectCooldown <= 0) { //if nothing was hit
+					Deselect();
 				}
 			} //touchphase began
 			break;
@@ -112,23 +112,30 @@ public class SelectionManager : MonoBehaviour {
 		shelfPlace = true;
 	}
 
-	public void Deselect() {
-		if(shelfPlace) {
-			GameManager.shelfManager.Deselect();
-			selected = null;
-			selectCooldown = selectDelay;
-			shelfPlace = false;
+	public bool Deselect() {
+		if(uiAction) {
+			uiAction = false;
+			return false;
 		}
-		else if (selected != null) {
-			selectedRenderer.material = prevMaterial;
-			selected = null;
-			selectCooldown = selectDelay;
+		else {
+			if(shelfPlace) {
+				GameManager.shelfManager.Deselect();
+				selected = null;
+				selectCooldown = selectDelay;
+				shelfPlace = false;
+			}
+			else if(selected != null) {
+				selectedRenderer.material = prevMaterial;
+				selected = null;
+				selectCooldown = selectDelay;
+			}
 		}
+		return true;
 	}
 
 	public void DeleteSelected() {
 		print("Got here");
-		if (selected != null && !shelfPlace) {
+		if(selected != null && !shelfPlace) {
 			print("Deleted");
 			Destroy(selected);
 			selectedRenderer = null;

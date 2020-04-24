@@ -164,10 +164,10 @@ TextureImporter:
       name: AR DND UI Sprites_1
       rect:
         serializedVersion: 2
-        x: 1380
-        y: 3916
-        width: 468
-        height: 415
+        x: 1430
+        y: 3945
+        width: 363
+        height: 363
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -513,7 +513,7 @@ TextureImporter:
         height: 1250
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 56, y: 51, z: 51, w: 51}
       outline:
       - - {x: -648.5936, y: 685.0886}
         - {x: -659.49207, y: 663.29285}
